@@ -1,0 +1,834 @@
+```{r}
+#Data Preparation - Sports Scheduling Project
+
+setwd("C:/Users/charr/Desktop/BZAN Semester 1/BZAN 531") #Working Directory
+
+D.DATA <- read.csv("use.txt") #AMPL solution file with first row as "ampl: g [*,*,1]"
+
+## WEEK 1 ##
+Week1 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week1[i,1] <- trimws(substr(D.DATA[i+1,1], 6,7), which="right") #first column
+  Week1[i,2] <- trimws(substr(D.DATA[i+1,1], 10,11), which="right") #second column
+  Week1[i,3] <- trimws(substr(D.DATA[i+1,1], 14,15), which="right") #third column
+  Week1[i,4] <- trimws(substr(D.DATA[i+1,1], 18,19), which="right") #forth column
+  Week1[i,5] <- trimws(substr(D.DATA[i+1,1], 22,23), which="right") #fifth column
+  Week1[i,6] <- trimws(substr(D.DATA[i+1,1], 26,27), which="right") #sixth column
+  Week1[i,7] <- trimws(substr(D.DATA[i+1,1], 30,31), which="right") #seventh column
+  Week1[i,8] <- trimws(substr(D.DATA[i+1,1], 34,35), which="right") #eighth column
+  Week1[i,9] <- trimws(substr(D.DATA[i+1,1], 38,39), which="right") #ninth column
+  Week1[i,10] <- trimws(substr(D.DATA[i+1,1], 42,43), which="right") #tenth column
+  Week1[i,11] <- trimws(substr(D.DATA[i+1,1], 46,47), which="right") #eleventh column
+  Week1[i,12] <- trimws(substr(D.DATA[i+1,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 2 ##
+Week2 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week2[i,1] <- trimws(substr(D.DATA[i+15,1], 6,7), which="right") #first column
+  Week2[i,2] <- trimws(substr(D.DATA[i+15,1], 10,11), which="right") #second column
+  Week2[i,3] <- trimws(substr(D.DATA[i+15,1], 14,15), which="right") #third column
+  Week2[i,4] <- trimws(substr(D.DATA[i+15,1], 18,19), which="right") #forth column
+  Week2[i,5] <- trimws(substr(D.DATA[i+15,1], 22,23), which="right") #fifth column
+  Week2[i,6] <- trimws(substr(D.DATA[i+15,1], 26,27), which="right") #sixth column
+  Week2[i,7] <- trimws(substr(D.DATA[i+15,1], 30,31), which="right") #seventh column
+  Week2[i,8] <- trimws(substr(D.DATA[i+15,1], 34,35), which="right") #eighth column
+  Week2[i,9] <- trimws(substr(D.DATA[i+15,1], 38,39), which="right") #ninth column
+  Week2[i,10] <- trimws(substr(D.DATA[i+15,1], 42,43), which="right") #tenth column
+  Week2[i,11] <- trimws(substr(D.DATA[i+15,1], 46,47), which="right") #eleventh column
+  Week2[i,12] <- trimws(substr(D.DATA[i+15,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 3 ##
+Week3 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week3[i,1] <- trimws(substr(D.DATA[i+29,1], 6,7), which="right") #first column
+  Week3[i,2] <- trimws(substr(D.DATA[i+29,1], 10,11), which="right") #second column
+  Week3[i,3] <- trimws(substr(D.DATA[i+29,1], 14,15), which="right") #third column
+  Week3[i,4] <- trimws(substr(D.DATA[i+29,1], 18,19), which="right") #forth column
+  Week3[i,5] <- trimws(substr(D.DATA[i+29,1], 22,23), which="right") #fifth column
+  Week3[i,6] <- trimws(substr(D.DATA[i+29,1], 26,27), which="right") #sixth column
+  Week3[i,7] <- trimws(substr(D.DATA[i+29,1], 30,31), which="right") #seventh column
+  Week3[i,8] <- trimws(substr(D.DATA[i+29,1], 34,35), which="right") #eighth column
+  Week3[i,9] <- trimws(substr(D.DATA[i+29,1], 38,39), which="right") #ninth column
+  Week3[i,10] <- trimws(substr(D.DATA[i+29,1], 42,43), which="right") #tenth column
+  Week3[i,11] <- trimws(substr(D.DATA[i+29,1], 46,47), which="right") #eleventh column
+  Week3[i,12] <- trimws(substr(D.DATA[i+29,1], 50,51), which="right") #twelth column
+}
+
+
+## WEEK 4 ##
+Week4 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week4[i,1] <- trimws(substr(D.DATA[i+43,1], 6,7), which="right") #first column
+  Week4[i,2] <- trimws(substr(D.DATA[i+43,1], 10,11), which="right") #second column
+  Week4[i,3] <- trimws(substr(D.DATA[i+43,1], 14,15), which="right") #third column
+  Week4[i,4] <- trimws(substr(D.DATA[i+43,1], 18,19), which="right") #forth column
+  Week4[i,5] <- trimws(substr(D.DATA[i+43,1], 22,23), which="right") #fifth column
+  Week4[i,6] <- trimws(substr(D.DATA[i+43,1], 26,27), which="right") #sixth column
+  Week4[i,7] <- trimws(substr(D.DATA[i+43,1], 30,31), which="right") #seventh column
+  Week4[i,8] <- trimws(substr(D.DATA[i+43,1], 34,35), which="right") #eighth column
+  Week4[i,9] <- trimws(substr(D.DATA[i+43,1], 38,39), which="right") #ninth column
+  Week4[i,10] <- trimws(substr(D.DATA[i+43,1], 42,43), which="right") #tenth column
+  Week4[i,11] <- trimws(substr(D.DATA[i+43,1], 46,47), which="right") #eleventh column
+  Week4[i,12] <- trimws(substr(D.DATA[i+43,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 5 ##
+Week5 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week5[i,1] <- trimws(substr(D.DATA[i+57,1], 6,7), which="right") #first column
+  Week5[i,2] <- trimws(substr(D.DATA[i+57,1], 10,11), which="right") #second column
+  Week5[i,3] <- trimws(substr(D.DATA[i+57,1], 14,15), which="right") #third column
+  Week5[i,4] <- trimws(substr(D.DATA[i+57,1], 18,19), which="right") #forth column
+  Week5[i,5] <- trimws(substr(D.DATA[i+57,1], 22,23), which="right") #fifth column
+  Week5[i,6] <- trimws(substr(D.DATA[i+57,1], 26,27), which="right") #sixth column
+  Week5[i,7] <- trimws(substr(D.DATA[i+57,1], 30,31), which="right") #seventh column
+  Week5[i,8] <- trimws(substr(D.DATA[i+57,1], 34,35), which="right") #eighth column
+  Week5[i,9] <- trimws(substr(D.DATA[i+57,1], 38,39), which="right") #ninth column
+  Week5[i,10] <- trimws(substr(D.DATA[i+57,1], 42,43), which="right") #tenth column
+  Week5[i,11] <- trimws(substr(D.DATA[i+57,1], 46,47), which="right") #eleventh column
+  Week5[i,12] <- trimws(substr(D.DATA[i+57,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 6 ##
+Week6 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week6[i,1] <- trimws(substr(D.DATA[i+71,1], 6,7), which="right") #first column
+  Week6[i,2] <- trimws(substr(D.DATA[i+71,1], 10,11), which="right") #second column
+  Week6[i,3] <- trimws(substr(D.DATA[i+71,1], 14,15), which="right") #third column
+  Week6[i,4] <- trimws(substr(D.DATA[i+71,1], 18,19), which="right") #forth column
+  Week6[i,5] <- trimws(substr(D.DATA[i+71,1], 22,23), which="right") #fifth column
+  Week6[i,6] <- trimws(substr(D.DATA[i+71,1], 26,27), which="right") #sixth column
+  Week6[i,7] <- trimws(substr(D.DATA[i+71,1], 30,31), which="right") #seventh column
+  Week6[i,8] <- trimws(substr(D.DATA[i+71,1], 34,35), which="right") #eighth column
+  Week6[i,9] <- trimws(substr(D.DATA[i+71,1], 38,39), which="right") #ninth column
+  Week6[i,10] <- trimws(substr(D.DATA[i+71,1], 42,43), which="right") #tenth column
+  Week6[i,11] <- trimws(substr(D.DATA[i+71,1], 46,47), which="right") #eleventh column
+  Week6[i,12] <- trimws(substr(D.DATA[i+71,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 7 ##
+Week7 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week7[i,1] <- trimws(substr(D.DATA[i+85,1], 6,7), which="right") #first column
+  Week7[i,2] <- trimws(substr(D.DATA[i+85,1], 10,11), which="right") #second column
+  Week7[i,3] <- trimws(substr(D.DATA[i+85,1], 14,15), which="right") #third column
+  Week7[i,4] <- trimws(substr(D.DATA[i+85,1], 18,19), which="right") #forth column
+  Week7[i,5] <- trimws(substr(D.DATA[i+85,1], 22,23), which="right") #fifth column
+  Week7[i,6] <- trimws(substr(D.DATA[i+85,1], 26,27), which="right") #sixth column
+  Week7[i,7] <- trimws(substr(D.DATA[i+85,1], 30,31), which="right") #seventh column
+  Week7[i,8] <- trimws(substr(D.DATA[i+85,1], 34,35), which="right") #eighth column
+  Week7[i,9] <- trimws(substr(D.DATA[i+85,1], 38,39), which="right") #ninth column
+  Week7[i,10] <- trimws(substr(D.DATA[i+85,1], 42,43), which="right") #tenth column
+  Week7[i,11] <- trimws(substr(D.DATA[i+85,1], 46,47), which="right") #eleventh column
+  Week7[i,12] <- trimws(substr(D.DATA[i+85,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 8 ##
+Week8 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week8[i,1] <- trimws(substr(D.DATA[i+99,1], 6,7), which="right") #first column
+  Week8[i,2] <- trimws(substr(D.DATA[i+99,1], 10,11), which="right") #second column
+  Week8[i,3] <- trimws(substr(D.DATA[i+99,1], 14,15), which="right") #third column
+  Week8[i,4] <- trimws(substr(D.DATA[i+99,1], 18,19), which="right") #forth column
+  Week8[i,5] <- trimws(substr(D.DATA[i+99,1], 22,23), which="right") #fifth column
+  Week8[i,6] <- trimws(substr(D.DATA[i+99,1], 26,27), which="right") #sixth column
+  Week8[i,7] <- trimws(substr(D.DATA[i+99,1], 30,31), which="right") #seventh column
+  Week8[i,8] <- trimws(substr(D.DATA[i+99,1], 34,35), which="right") #eighth column
+  Week8[i,9] <- trimws(substr(D.DATA[i+99,1], 38,39), which="right") #ninth column
+  Week8[i,10] <- trimws(substr(D.DATA[i+99,1], 42,43), which="right") #tenth column
+  Week8[i,11] <- trimws(substr(D.DATA[i+99,1], 46,47), which="right") #eleventh column
+  Week8[i,12] <- trimws(substr(D.DATA[i+99,1], 50,51), which="right") #twelth column
+}
+
+## WEEK 9 ##
+Week9 <- matrix(nrow = 12, ncol = 12)
+
+for (i in 1:12) {
+  Week9[i,1] <- trimws(substr(D.DATA[i+113,1], 6,7), which="right") #first column
+  Week9[i,2] <- trimws(substr(D.DATA[i+113,1], 10,11), which="right") #second column
+  Week9[i,3] <- trimws(substr(D.DATA[i+113,1], 14,15), which="right") #third column
+  Week9[i,4] <- trimws(substr(D.DATA[i+113,1], 18,19), which="right") #forth column
+  Week9[i,5] <- trimws(substr(D.DATA[i+113,1], 22,23), which="right") #fifth column
+  Week9[i,6] <- trimws(substr(D.DATA[i+113,1], 26,27), which="right") #sixth column
+  Week9[i,7] <- trimws(substr(D.DATA[i+113,1], 30,31), which="right") #seventh column
+  Week9[i,8] <- trimws(substr(D.DATA[i+113,1], 34,35), which="right") #eighth column
+  Week9[i,9] <- trimws(substr(D.DATA[i+113,1], 38,39), which="right") #ninth column
+  Week9[i,10] <- trimws(substr(D.DATA[i+113,1], 42,43), which="right") #tenth column
+  Week9[i,11] <- trimws(substr(D.DATA[i+113,1], 46,47), which="right") #eleventh column
+  Week9[i,12] <- trimws(substr(D.DATA[i+113,1], 50,51), which="right") #twelth column
+}
+
+#Convert to numeric matrix
+Week1 <- apply(Week1, 2, as.numeric)
+Week2 <- apply(Week2, 2, as.numeric)
+Week3 <- apply(Week3, 2, as.numeric)
+Week4 <- apply(Week4, 2, as.numeric)
+Week5 <- apply(Week5, 2, as.numeric)
+Week6 <- apply(Week6, 2, as.numeric)
+Week7 <- apply(Week7, 2, as.numeric)
+Week8 <- apply(Week8, 2, as.numeric)
+Week9 <- apply(Week9, 2, as.numeric)
+
+Week1Schedule <- matrix(ncol=3, nrow=length(which(Week1 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week1[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week1Schedule[Count,1] <- i
+    Week1Schedule[Count,2] <- which(Week1[i,] == max(Week1[i,]))
+    Week1Schedule[Count,3] <- 1
+    
+  } }
+
+Week2Schedule <- matrix(ncol=3, nrow=length(which(Week2 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week2[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week2Schedule[Count,1] <- i
+    Week2Schedule[Count,2] <- which(Week2[i,] == max(Week2[i,]))
+    Week2Schedule[Count,3] <- 2
+    
+  } }
+
+Week3Schedule <- matrix(ncol=3, nrow=length(which(Week3 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week3[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week3Schedule[Count,1] <- i
+    Week3Schedule[Count,2] <- which(Week3[i,] == max(Week3[i,]))
+    Week3Schedule[Count,3] <- 3
+    
+  } }
+
+Week4Schedule <- matrix(ncol=3, nrow=length(which(Week4 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week4[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week4Schedule[Count,1] <- i
+    Week4Schedule[Count,2] <- which(Week4[i,] == max(Week4[i,]))
+    Week4Schedule[Count,3] <- 4
+    
+  } }
+
+Week5Schedule <- matrix(ncol=3, nrow=length(which(Week5 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week5[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week5Schedule[Count,1] <- i
+    Week5Schedule[Count,2] <- which(Week5[i,] == max(Week5[i,]))
+    Week5Schedule[Count,3] <- 5
+    
+  } }
+
+Week6Schedule <- matrix(ncol=3, nrow=length(which(Week6 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week6[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week6Schedule[Count,1] <- i
+    Week6Schedule[Count,2] <- which(Week6[i,] == max(Week6[i,]))
+    Week6Schedule[Count,3] <- 6
+    
+  } }
+
+Week7Schedule <- matrix(ncol=3, nrow=length(which(Week7 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week7[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week7Schedule[Count,1] <- i
+    Week7Schedule[Count,2] <- which(Week7[i,] == max(Week7[i,]))
+    Week7Schedule[Count,3] <- 7
+    
+  } }
+
+Week8Schedule <- matrix(ncol=3, nrow=length(which(Week8 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week8[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week8Schedule[Count,1] <- i
+    Week8Schedule[Count,2] <- which(Week8[i,] == max(Week8[i,]))
+    Week8Schedule[Count,3] <- 8
+    
+  } }
+
+Week9Schedule <- matrix(ncol=3, nrow=length(which(Week9 == 1)))
+Count <- 0
+for (i in 1:12) {
+  if(max(Week9[i,]) == 1) { 
+    
+    Count <- Count + 1
+    Week9Schedule[Count,1] <- i
+    Week9Schedule[Count,2] <- which(Week9[i,] == max(Week9[i,]))
+    Week9Schedule[Count,3] <- 9
+    
+  } }
+
+Schedule <- rbind(Week1Schedule, Week2Schedule, Week3Schedule, Week4Schedule, Week5Schedule, Week6Schedule, Week7Schedule, Week8Schedule, Week9Schedule)
+
+Schedule <- Schedule[!is.na(Schedule[,1]),]
+colnames(Schedule) <- c("Home", "Away", "Week")
+
+#Attach team names
+Home <- Schedule[,1]
+Away <- Schedule[,2]
+
+Home[which(Home == 1)] <- "Canada"
+Home[which(Home == 2)] <- "Iceland"
+Home[which(Home == 3)] <- "Sweden"
+Home[which(Home == 4)] <- "Russia"
+Home[which(Home == 5)] <- "Denmark"
+Home[which(Home == 6)] <- "Japan"
+Home[which(Home == 7)] <- "Antarctica"
+Home[which(Home == 8)] <- "Australia"
+Home[which(Home == 9)] <- "Chile"
+Home[which(Home == 10)] <- "Argentina"
+Home[which(Home == 11)] <- "Tahiti"
+Home[which(Home == 12)] <- "Fiji"
+
+Away[which(Away == 1)] <- "Canada"
+Away[which(Away == 2)] <- "Iceland"
+Away[which(Away == 3)] <- "Sweden"
+Away[which(Away == 4)] <- "Russia"
+Away[which(Away == 5)] <- "Denmark"
+Away[which(Away == 6)] <- "Japan"
+Away[which(Away == 7)] <- "Antarctica"
+Away[which(Away == 8)] <- "Australia"
+Away[which(Away == 9)] <- "Chile"
+Away[which(Away == 10)] <- "Argentina"
+Away[which(Away == 11)] <- "Tahiti"
+Away[which(Away == 12)] <- "Fiji"
+
+Schedule[,1] <- Home
+Schedule[,2] <- Away
+
+FinalSchedule <- Schedule
+write.csv(FinalSchedule, "FinalSchedule.csv") #export csv
+
+locations <- unique(Away)
+fs <- as.data.frame(FinalSchedule, stringsAsFactors = FALSE)
+```
+
+
+
+
+```{r}
+fs
+#countries
+Canada <- fs[which(fs[,1] == "Canada"|fs[,2] == "Canada"),]
+Iceland <- fs[which(fs[,1] == "Iceland"|fs[,2] == "Iceland"),]
+Sweden <- fs[which(fs[,1] == "Sweden"|fs[,2] == "Sweden"),]
+Russia <- fs[which(fs[,1] == "Russia"|fs[,2] == "Russia"),]
+Denmark <- fs[which(fs[,1] == "Denmark"|fs[,2] == "Denmark"),]
+Japan <- fs[which(fs[,1] == "Japan"|fs[,2] == "Japan"),]
+Antarctica <- fs[which(fs[,1] == "Antarctica"|fs[,2] == "Antarctica"),]
+Australia <- fs[which(fs[,1] == "Australia"|fs[,2] == "Australia"),]
+Chile <- fs[which(fs[,1] == "Chile"|fs[,2] == "Chile"),]
+Argentina <- fs[which(fs[,1] == "Argentina"|fs[,2] == "Argentina"),]
+Fiji <- fs[which(fs[,1] == "Fiji"|fs[,2] == "Fiji"),]
+Tahiti <- fs[which(fs[,1] == "Tahiti"|fs[,2] == "Tahiti"),]
+
+
+
+for (i in 1:nrow(Canada)) {
+  if(Canada[i,1] == Canada[i,2]) {
+    Canada[i,1] <- "Bye"
+    Canada[i,2] <- ""}
+}
+
+for (i in 1:nrow(Iceland)) {
+  if(Iceland[i,1] == Iceland[i,2]) {
+    Iceland[i,1] <- "Bye"
+    Iceland[i,2] <- ""}
+}
+
+for (i in 1:nrow(Sweden)) {
+  if(Sweden[i,1] == Sweden[i,2]) {
+    Sweden[i,1] <- "Bye"
+    Sweden[i,2] <- ""}
+}
+
+for (i in 1:nrow(Russia)) {
+  if(Russia[i,1] == Russia[i,2]) {
+    Russia[i,1] <- "Bye"
+    Russia[i,2] <- ""}
+}
+
+for (i in 1:nrow(Denmark)) {
+  if(Denmark[i,1] == Denmark[i,2]) {
+    Denmark[i,1] <- "Bye"
+    Denmark[i,2] <- ""}
+}
+
+for (i in 1:nrow(Japan)) {
+  if(Japan[i,1] == Japan[i,2]) {
+    Japan[i,1] <- "Bye"
+    Japan[i,2] <- ""}
+}
+
+for (i in 1:nrow(Antarctica)) {
+  if(Antarctica[i,1] == Antarctica[i,2]) {
+    Antarctica[i,1] <- "Bye"
+    Antarctica[i,2] <- ""}
+}
+
+for (i in 1:nrow(Australia)) {
+  if(Australia[i,1] == Australia[i,2]) {
+    Australia[i,1] <- "Bye"
+    Australia[i,2] <- ""}
+}
+
+for (i in 1:nrow(Chile)) {
+  if(Chile[i,1] == Chile[i,2]) {
+    Chile[i,1] <- "Bye"
+    Chile[i,2] <- ""}
+}
+
+for (i in 1:nrow(Argentina)) {
+  if(Argentina[i,1] == Argentina[i,2]) {
+    Argentina[i,1] <- "Bye"
+    Argentina[i,2] <- ""}
+}
+
+for (i in 1:nrow(Fiji)) {
+  if(Fiji[i,1] == Fiji[i,2]) {
+    Fiji[i,1] <- "Bye"
+    Fiji[i,2] <- ""}
+}
+
+for (i in 1:nrow(Tahiti)) {
+  if(Tahiti[i,1] == Tahiti[i,2]) {
+    Tahiti[i,1] <- "Bye"
+    Tahiti[i,2] <- ""}
+}
+library(dplyr)
+
+locations <- c("Canada", "Sweden", "Iceland","Russia","Denmark","Japan","Antarctica","Australia","Chile","Argentina","Tahiti","Fiji")
+
+fs <- fs %>% select(Week, Home, Away)
+Canada <- Canada %>% select(Week, Home, Away)
+Sweden <- Sweden %>% select(Week, Home, Away)
+Iceland <- Iceland %>% select(Week, Home, Away)
+Russia <- Russia %>% select(Week, Home, Away)
+Japan <- Japan %>% select(Week, Home, Away)
+Denmark <- Denmark %>% select(Week, Home, Away)
+Antarctica <- Antarctica %>% select(Week, Home, Away)
+Australia <- Australia %>% select(Week, Home, Away)
+Chile <- Chile %>% select(Week, Home, Away)
+Argentina <- Argentina %>% select(Week, Home, Away)
+Tahiti <- Tahiti %>% select(Week, Home, Away)
+Fiji <- Fiji %>% select(Week, Home, Away)
+
+
+
+for (i in 1:nrow(fs)) {
+  if(fs[i,3] == fs[i,2]) {fs[i,3] <- "Bye"}
+}
+
+
+away <- c()
+for(i in 1:nrow(Canada)){
+  if( Canada$Home[i] != "Canada"){
+    away[i] <- Canada$Home[i]
+    Canada$Home[i] <- "Canada  @"
+    Canada$Away[i] <- away[i]
+  }
+
+  if(( Canada$Home[i] == "Canada")){
+    Canada$Home[i] <- "Canada vs"
+  }
+    if(Canada$Home[i] == "Bye" | Canada$Away[i] == "Bye"){
+    Canada$Home[i] <- "Bye      "
+    Canada$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Denmark)){
+  if( Denmark$Home[i] != "Denmark"){
+    away[i] <- Denmark$Home[i]
+    Denmark$Home[i] <- "Denmark  @"
+    Denmark$Away[i] <- away[i]
+  }
+
+  if(( Denmark$Home[i] == "Denmark")){
+    Denmark$Home[i] <- "Denmark vs"
+  }
+    if(Denmark$Home[i] == "Bye" | Denmark$Away[i] == "Bye"){
+    Denmark$Home[i] <- "Bye       "
+    Denmark$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Sweden)){
+  if( Sweden$Home[i] != "Sweden"){
+    away[i] <- Sweden$Home[i]
+    Sweden$Home[i] <- "Sweden  @"
+    Sweden$Away[i] <- away[i]
+  }
+
+  if(( Sweden$Home[i] == "Sweden")){
+    Sweden$Home[i] <- "Sweden vs"
+  }
+    if(Sweden$Home[i] == "Bye" | Sweden$Away[i] == "Bye"){
+    Sweden$Home[i] <- "Bye      "
+    Sweden$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Iceland)){
+  if( Iceland$Home[i] != "Iceland"){
+    away[i] <- Iceland$Home[i]
+    Iceland$Home[i] <- "Iceland  @"
+    Iceland$Away[i] <- away[i]
+  }
+
+  if(( Iceland$Home[i] == "Iceland")){
+    Iceland$Home[i] <- "Iceland vs"
+  }
+    if(Iceland$Home[i] == "Bye" | Iceland$Away[i] == "Bye"){
+    Iceland$Home[i] <- "Bye      "
+    Iceland$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Japan)){
+  if( Japan$Home[i] != "Japan"){
+    away[i] <- Japan$Home[i]
+    Japan$Home[i] <- "Japan  @"
+    Japan$Away[i] <- away[i]
+  }
+
+  if(( Japan$Home[i] == "Japan")){
+    Japan$Home[i] <- "Japan vs"
+  }
+    if(Japan$Home[i] == "Bye" | Japan$Away[i] == "Bye"){
+    Japan$Home[i] <- "Bye      "
+    Japan$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Russia)){
+  if( Russia$Home[i] != "Russia"){
+    away[i] <- Russia$Home[i]
+    Russia$Home[i] <- "Russia  @"
+    Russia$Away[i] <- away[i]
+  }
+
+  if(( Russia$Home[i] == "Russia")){
+    Russia$Home[i] <- "Russia vs"
+  }
+    if(Russia$Home[i] == "Bye" | Russia$Away[i] == "Bye"){
+    Russia$Home[i] <- "Bye      "
+    Russia$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Antarctica)){
+  if( Antarctica$Home[i] != "Antarctica"){
+    away[i] <- Antarctica$Home[i]
+    Antarctica$Home[i] <- "Antarctica  @"
+    Antarctica$Away[i] <- away[i]
+  }
+
+  if(( Antarctica$Home[i] == "Antarctica")){
+    Antarctica$Home[i] <- "Antarctica vs"
+  }
+    if(Antarctica$Home[i] == "Bye" | Antarctica$Away[i] == "Bye"){
+    Antarctica$Home[i] <- "Bye      "
+    Antarctica$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Australia)){
+  if( Australia$Home[i] != "Australia"){
+    away[i] <- Australia$Home[i]
+    Australia$Home[i] <- "Australia  @"
+    Australia$Away[i] <- away[i]
+  }
+
+  if(( Australia$Home[i] == "Australia")){
+    Australia$Home[i] <- "Australia vs"
+  }
+    if(Australia$Home[i] == "Bye" | Australia$Away[i] == "Bye"){
+    Australia$Home[i] <- "Bye      "
+    Australia$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Fiji)){
+  if( Fiji$Home[i] != "Fiji"){
+    away[i] <- Fiji$Home[i]
+    Fiji$Home[i] <- "Fiji  @"
+    Fiji$Away[i] <- away[i]
+  }
+
+  if(( Fiji$Home[i] == "Fiji")){
+    Fiji$Home[i] <- "Fiji vs"
+  }
+    if(Fiji$Home[i] == "Bye" | Fiji$Away[i] == "Bye"){
+    Fiji$Home[i] <- "Bye      "
+    Fiji$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Tahiti)){
+  if( Tahiti$Home[i] != "Tahiti"){
+    away[i] <- Tahiti$Home[i]
+    Tahiti$Home[i] <- "Tahiti  @"
+    Tahiti$Away[i] <- away[i]
+  }
+
+  if(( Tahiti$Home[i] == "Tahiti")){
+    Tahiti$Home[i] <- "Tahiti vs"
+  }
+    if(Tahiti$Home[i] == "Bye" | Tahiti$Away[i] == "Bye"){
+    Tahiti$Home[i] <- "Bye      "
+    Tahiti$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Argentina)){
+  if( Argentina$Home[i] != "Argentina"){
+    away[i] <- Argentina$Home[i]
+    Argentina$Home[i] <- "Argentina  @"
+    Argentina$Away[i] <- away[i]
+  }
+
+  if(( Argentina$Home[i] == "Argentina")){
+    Argentina$Home[i] <- "Argentina vs"
+  }
+    if(Argentina$Home[i] == "Bye" | Argentina$Away[i] == "Bye"){
+    Argentina$Home[i] <- "Bye      "
+    Argentina$Away[i] <- ""
+  }
+}
+
+for(i in 1:nrow(Chile)){
+  if( Chile$Home[i] != "Chile"){
+    away[i] <- Chile$Home[i]
+    Chile$Home[i] <- "Chile  @"
+    Chile$Away[i] <- away[i]
+  }
+
+  if(( Chile$Home[i] == "Chile")){
+    Chile$Home[i] <- "Chile vs"
+  }
+    if(Chile$Home[i] == "Bye" | Chile$Away[i] == "Bye"){
+    Chile$Home[i] <- "Bye      "
+    Chile$Away[i] <- ""
+  }
+}
+
+Canada <- as.matrix(Canada)
+colnames(Canada) <- c("Week", " ", "  ")
+
+Denmark <- as.matrix(Denmark)
+colnames(Denmark) <- c("Week", " ", "  ")
+
+Iceland <- as.matrix(Iceland)
+colnames(Iceland) <- c("Week", " ", "  ")
+
+Russia <- as.matrix(Russia)
+colnames(Russia) <- c("Week", " ", "  ")
+
+Japan <- as.matrix(Japan)
+colnames(Japan) <- c("Week", " ", "  ")
+
+Sweden <- as.matrix(Sweden)
+colnames(Sweden) <- c("Week", " ", "  ")
+
+Antarctica <- as.matrix(Antarctica)
+colnames(Antarctica) <- c("Week", " ", "  ")
+
+Australia <- as.matrix(Australia)
+colnames(Australia) <- c("Week", " ", "  ")
+
+Fiji <- as.matrix(Fiji)
+colnames(Fiji) <- c("Week", " ", "  ")
+
+Tahiti <- as.matrix(Tahiti)
+colnames(Tahiti) <- c("Week", " ", "  ")
+
+Chile <- as.matrix(Chile)
+colnames(Chile) <- c("Week", " ", "  ")
+
+Argentina <- as.matrix(Argentina)
+colnames(Argentina) <- c("Week", " ", "  ")
+
+fs2 <- fs
+fs2 <- fs2 %>% select(Away, Home)
+
+fs2$Home <- paste0("@ ", fs2$Home)
+for(i in 1:nrow(fs2)){
+    if(fs2$Home[i] == "Bye" | fs2$Away[i] == "Bye"){
+    fs2$Away[i] <- fs$Home[i]
+    fs2$Home[i] <- "    Bye"
+    }
+}
+fs2 <- as.matrix(fs2)
+colnames(fs2) <- c(" ", "   ")
+
+
+
+#weeks
+Week1 <- fs2[which(fs[,1] == 1),]
+Week2 <- fs2[which(fs[,1] == 2),]
+Week3 <- fs2[which(fs[,1] == 3),]
+Week4 <- fs2[which(fs[,1] == 4),]
+Week5 <- fs2[which(fs[,1] == 5),]
+Week6 <- fs2[which(fs[,1] == 6),]
+Week7 <- fs2[which(fs[,1] == 7),]
+Week8 <- fs2[which(fs[,1] == 8),]
+Week9 <- fs2[which(fs[,1] == 9),]
+
+
+```
+
+
+
+
+```{r}
+library(shiny)
+library(png)
+library(shinythemes)
+
+# Define UI for dataset viewer app ----
+ui <- navbarPage("World Softball League",
+                 tabPanel("Team Schedules",
+                          fluidPage(theme = shinytheme("united"),
+                                    
+                                    # App title ----
+                                    titlePanel("Teams"),
+                                    
+                                    # Sidebar layout with input and output definitions ----
+                                    sidebarLayout(
+                                      
+                                      # Sidebar panel for inputs ----
+                                      sidebarPanel(
+                                        
+                                        selectInput("countries", choices = c(''), label = "Choose a team"),
+                                        # Include clarifying text ----
+                                        helpText("")
+                                        
+                                      ),
+                                      
+                                      
+                                      # Main panel for displaying outputs ----
+                                      mainPanel(
+                                        
+                                        # Output: Header + table of distribution ----
+                                        h3(uiOutput("header")),
+                                        tableOutput("view")#,
+                                        #imageOutput("image1")
+                                      
+                                    )
+                                    
+                          )
+                 )
+                 ),
+                 tabPanel("Weekly Schedule",
+                          fluidPage(
+                            
+                            # App title ----
+                            titlePanel("Weeks"),
+                            
+                            # Sidebar layout with input and output definitions ----
+                            sidebarLayout(
+                              sidebarPanel(
+                                selectInput("data", "Choose a week:",
+                                            choices = c("1","2","3","4","5","6","7","8","9")),
+                                helpText("")
+                                
+                              ),
+                              mainPanel(
+                                h3(uiOutput("head")),
+                                tableOutput("fs")
+                              )
+                              
+                            )
+                          )
+                 )
+)
+
+# Define server logic to summarize and view selected dataset ----
+server <- function(input, output, session) {
+  
+  updateSelectInput(session, "countries", choices = locations)
+  
+  countries <- reactive({
+    switch(input$countries,
+           "Canada" = Canada,
+           "Iceland" = Iceland,
+           "Sweden" = Sweden,
+           "Russia" = Russia,
+           "Denmark" = Denmark,
+           "Japan" = Japan,
+           "Antarctica" = Antarctica,
+           "Australia" = Australia,
+           "Argentina" = Argentina,
+           "Chile" = Chile,
+           "Tahiti" = Tahiti,
+           "Fiji" = Fiji)
+  })
+  
+  output$view <- renderTable({
+    countries()
+  }, spacing = "l")
+  
+  output$header <- renderUI({
+    input$countries
+  })
+  
+  
+ # output$image1 <- ("www/Canada.png")
+  
+  weeks <- reactive({
+    switch(input$data,
+           "1" = Week1,
+           "2" = Week2,
+           "3" = Week3,
+           "4" = Week4,
+           "5" = Week5,
+           "6" = Week6,
+           "7" = Week7,
+           "8" = Week8,
+           "9" = Week9)
+  })
+  
+  output$fs <- renderTable({
+    weeks()
+  }, spacing = "l")
+  
+  output$head <- renderUI({
+    paste("Week ", input$data)
+  })
+}
+
+
+
+# Create Shiny app ----
+shinyApp(ui, server)
+```

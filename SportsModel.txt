@@ -1,0 +1,131 @@
+param I>=0; #home games;
+param J>=0; #away games;
+param L>=0; #weeks;
+
+param d {i in 1..I, j in 1..J} >= 0; #distance matrix
+
+param p {i in 1..I, j in 1..J} >= 0; #penalties for away/big games
+
+param w {l in 1..L} >= 0; #penalty for bye weeks
+
+var g {i in 1..I, j in 1..J, l in 1..L} binary; #games
+
+######################################################
+##Objective Function/Soft Constraints##
+######################################################
+
+#range
+subject to Under{j in 1..J}:
+sum{l in 1..L, i in 1..I} g[i,j,l] * d[i,j] >= 2800; #min travel distance
+
+#average = 3308
+#difference of 500 miles - only 1 hour difference of flight time overall
+#								- avg jet flies 500mph
+
+subject to Over{j in 1..J}:
+sum{l in 1..L, i in 1..I} 
+g[i,j,l] * d[i,j] <= 3300; #max travel distance
+
+#Maximize Big Games with Byes
+maximize BBG{l in 2..9}: 
+sum{i in 1..I, j in 1..J} (g[i,j,l]*p[i,j]);
+
+#Try to prevent byes in first week
+minimize BBG1{l in 1..L}: 
+sum{i in 1..I, j in 1..J} (g[i,j,l]*p[i,j]*w[l]);
+
+#minimize total distance traveled
+minimize distance{j in 1..J}: 
+sum{i in 1..I, l in 1..L} (g[i,j,l]*d[i,j]);
+
+######################################################
+##HARD CONSTRAINTS##
+######################################################
+
+#1 game per week
+subject to OnePerWeekMiddle{j in 2..11, l in 1..L}: g[j,j,l] + 
+sum{i in j+1..12} g[j,i,l] + 
+sum{i in 1..j-1} g[j,i,l] + 
+sum{i in j+1..12} g[i,j,l] + 
+sum{i in 1..j-1} g[i,j,l] = 1;
+
+subject to OnePerWeekFirst{l in 1..L}: g[1,1,l] + 
+sum{i in 2..12} g[1,i,l] + 
+sum{i in 2..12} g[i,1,l] = 1;
+
+subject to OnePerWeekLast{l in 1..L}: g[12,12,l] + 
+sum{i in 1..11} g[12,i,l] + 
+sum{i in 1..11} g[i,12,l] = 1;
+
+#Can't play same opponent twice
+subject to DifferentGames{i in 1..12, j in 1..12 : i<>j}:
+sum{l in 1..L} (g[i,j,l] + g[j,i,l]) <= 1; #five games, two byes per week/6 games no byes
+
+
+#North Division Games - everyone in division is played
+subject to NorthDiv{i in 1..5, j in i+1..6}: 
+sum{l in 1..L} (g[i,j,l] + g[j,i,l])= 1;
+
+#South Division Games - everyone in division is played
+subject to SouthDiv{i in 7..11, j in i+1..12}: 
+sum{l in 1..L} (g[i,j,l] + g[j,i,l]) = 1;
+
+#Bye week
+subject to Bye{i in 1..I}: sum{l in 1..L} g[i,i,l] = 1;
+
+#4 home games
+subject to Home{i in 1..I}: 
+sum{l in 1..L, j in 1..J} g[i,j,l] = 5; #5 because of byes
+
+#4 away games
+subject to Away{j in 1..J}:
+sum{l in 1..L, i in 1..I} g[i,j,l] = 5; #5 because of byes
+
+#No more than 2 back-back away
+subject to noB2B{i in 1..I, l in 1..L-2}:
+sum{j in 1..J}(g[i,j,l] + g[i,j,l+1] + g[i,j,l+2]) >= 1;
+
+#2/3 home division games
+#North low
+subject to 2_3HDGlowN{i in 1..6}:
+sum{l in 1..L, j in 1..6} g[i,j,l] >= 3;
+
+#North high
+subject to 2_3HDGhighN{i in 1..6}:
+sum{l in 1..L, j in 1..6} g[i,j,l] <= 4;
+
+#South low
+subject to 2_3HDGlowS{i in 7..12}:
+sum{l in 1..L, j in 7..12} g[i,j,l] >= 3;
+
+#South high
+subject to 2_3HDGhighS{i in 7..12}:
+sum{l in 1..L, j in 7..12} g[i,j,l] <= 4;
+
+#No away games first 2
+subject to NoAwayF2{i in 1..I}:
+sum{l in 1..2, j in 1..12} g[i,j,l] >= 1;
+
+#No away games last 2
+subject to NoAwayL2{i in 1..I}:
+sum{l in 8..9, j in 1..12} g[i,j,l] >= 1;
+
+#No bye-away-away first three weeks
+subject to NoBAAF3{j in 1..J}:
+sum{l in 1..3, i in 1..12} g[i,j,l] <= 2;
+
+#No bye-away-away last three weeks
+subject to NoBAAL3{j in 1..J}:
+sum{l in 7..9, i in 1..12} g[i,j,l] <= 2; 
+
+#Big Games -- spaced out to maintain interest
+subject to BigGames{l in 1..L-1}: 
+g[11,12,l] + g[12,11,l] + g[11,12,l+1] + g[12,11,l+1] +  #Tahiti/Fiji
+g[3,5,l] + g[5,3,l] + g[3,5,l+1] + g[5,3,l+1] + #Sweden/Denamrk
+g[9,10,l] + g[10,9,l] + g[9,10,l+1] + g[10,9,l+1] + #Chile/Argentina
+g[7,8,l] + g[8,7,l] + g[7,8,l+1] + g[8,7,l+1] <= 1; #Australia/Antarctica
+
+#Only 2 Byes per week max
+subject to 2ByesPerWeek{l in 1..L}: 
+sum{i in 1..I} g[i,i,l] <= 2;
+
