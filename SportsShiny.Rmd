@@ -3,7 +3,9 @@
 
 setwd("C:/Users/charr/Desktop/BZAN Semester 1/BZAN 531") #Working Directory
 
-D.DATA <- read.csv("use.txt") #AMPL solution file with first row as "ampl: g [*,*,1]"
+
+##Needs UTF-8 encoding
+D.DATA <- read.csv("SportsSolution.txt") #AMPL solution file with first row as "ampl: g [*,*,1]"
 
 ## WEEK 1 ##
 Week1 <- matrix(nrow = 12, ncol = 12)
@@ -456,11 +458,11 @@ for(i in 1:nrow(Canada)){
     Canada$Home[i] <- "Canada  @"
     Canada$Away[i] <- away[i]
   }
-
+  
   if(( Canada$Home[i] == "Canada")){
     Canada$Home[i] <- "Canada vs"
   }
-    if(Canada$Home[i] == "Bye" | Canada$Away[i] == "Bye"){
+  if(Canada$Home[i] == "Bye" | Canada$Away[i] == "Bye"){
     Canada$Home[i] <- "Bye      "
     Canada$Away[i] <- ""
   }
@@ -472,11 +474,11 @@ for(i in 1:nrow(Denmark)){
     Denmark$Home[i] <- "Denmark  @"
     Denmark$Away[i] <- away[i]
   }
-
+  
   if(( Denmark$Home[i] == "Denmark")){
     Denmark$Home[i] <- "Denmark vs"
   }
-    if(Denmark$Home[i] == "Bye" | Denmark$Away[i] == "Bye"){
+  if(Denmark$Home[i] == "Bye" | Denmark$Away[i] == "Bye"){
     Denmark$Home[i] <- "Bye       "
     Denmark$Away[i] <- ""
   }
@@ -488,11 +490,11 @@ for(i in 1:nrow(Sweden)){
     Sweden$Home[i] <- "Sweden  @"
     Sweden$Away[i] <- away[i]
   }
-
+  
   if(( Sweden$Home[i] == "Sweden")){
     Sweden$Home[i] <- "Sweden vs"
   }
-    if(Sweden$Home[i] == "Bye" | Sweden$Away[i] == "Bye"){
+  if(Sweden$Home[i] == "Bye" | Sweden$Away[i] == "Bye"){
     Sweden$Home[i] <- "Bye      "
     Sweden$Away[i] <- ""
   }
@@ -504,11 +506,11 @@ for(i in 1:nrow(Iceland)){
     Iceland$Home[i] <- "Iceland  @"
     Iceland$Away[i] <- away[i]
   }
-
+  
   if(( Iceland$Home[i] == "Iceland")){
     Iceland$Home[i] <- "Iceland vs"
   }
-    if(Iceland$Home[i] == "Bye" | Iceland$Away[i] == "Bye"){
+  if(Iceland$Home[i] == "Bye" | Iceland$Away[i] == "Bye"){
     Iceland$Home[i] <- "Bye      "
     Iceland$Away[i] <- ""
   }
@@ -520,11 +522,11 @@ for(i in 1:nrow(Japan)){
     Japan$Home[i] <- "Japan  @"
     Japan$Away[i] <- away[i]
   }
-
+  
   if(( Japan$Home[i] == "Japan")){
     Japan$Home[i] <- "Japan vs"
   }
-    if(Japan$Home[i] == "Bye" | Japan$Away[i] == "Bye"){
+  if(Japan$Home[i] == "Bye" | Japan$Away[i] == "Bye"){
     Japan$Home[i] <- "Bye      "
     Japan$Away[i] <- ""
   }
@@ -536,11 +538,11 @@ for(i in 1:nrow(Russia)){
     Russia$Home[i] <- "Russia  @"
     Russia$Away[i] <- away[i]
   }
-
+  
   if(( Russia$Home[i] == "Russia")){
     Russia$Home[i] <- "Russia vs"
   }
-    if(Russia$Home[i] == "Bye" | Russia$Away[i] == "Bye"){
+  if(Russia$Home[i] == "Bye" | Russia$Away[i] == "Bye"){
     Russia$Home[i] <- "Bye      "
     Russia$Away[i] <- ""
   }
@@ -552,11 +554,11 @@ for(i in 1:nrow(Antarctica)){
     Antarctica$Home[i] <- "Antarctica  @"
     Antarctica$Away[i] <- away[i]
   }
-
+  
   if(( Antarctica$Home[i] == "Antarctica")){
     Antarctica$Home[i] <- "Antarctica vs"
   }
-    if(Antarctica$Home[i] == "Bye" | Antarctica$Away[i] == "Bye"){
+  if(Antarctica$Home[i] == "Bye" | Antarctica$Away[i] == "Bye"){
     Antarctica$Home[i] <- "Bye      "
     Antarctica$Away[i] <- ""
   }
@@ -568,11 +570,11 @@ for(i in 1:nrow(Australia)){
     Australia$Home[i] <- "Australia  @"
     Australia$Away[i] <- away[i]
   }
-
+  
   if(( Australia$Home[i] == "Australia")){
     Australia$Home[i] <- "Australia vs"
   }
-    if(Australia$Home[i] == "Bye" | Australia$Away[i] == "Bye"){
+  if(Australia$Home[i] == "Bye" | Australia$Away[i] == "Bye"){
     Australia$Home[i] <- "Bye      "
     Australia$Away[i] <- ""
   }
@@ -584,11 +586,11 @@ for(i in 1:nrow(Fiji)){
     Fiji$Home[i] <- "Fiji  @"
     Fiji$Away[i] <- away[i]
   }
-
+  
   if(( Fiji$Home[i] == "Fiji")){
     Fiji$Home[i] <- "Fiji vs"
   }
-    if(Fiji$Home[i] == "Bye" | Fiji$Away[i] == "Bye"){
+  if(Fiji$Home[i] == "Bye" | Fiji$Away[i] == "Bye"){
     Fiji$Home[i] <- "Bye      "
     Fiji$Away[i] <- ""
   }
@@ -600,11 +602,11 @@ for(i in 1:nrow(Tahiti)){
     Tahiti$Home[i] <- "Tahiti  @"
     Tahiti$Away[i] <- away[i]
   }
-
+  
   if(( Tahiti$Home[i] == "Tahiti")){
     Tahiti$Home[i] <- "Tahiti vs"
   }
-    if(Tahiti$Home[i] == "Bye" | Tahiti$Away[i] == "Bye"){
+  if(Tahiti$Home[i] == "Bye" | Tahiti$Away[i] == "Bye"){
     Tahiti$Home[i] <- "Bye      "
     Tahiti$Away[i] <- ""
   }
@@ -616,11 +618,11 @@ for(i in 1:nrow(Argentina)){
     Argentina$Home[i] <- "Argentina  @"
     Argentina$Away[i] <- away[i]
   }
-
+  
   if(( Argentina$Home[i] == "Argentina")){
     Argentina$Home[i] <- "Argentina vs"
   }
-    if(Argentina$Home[i] == "Bye" | Argentina$Away[i] == "Bye"){
+  if(Argentina$Home[i] == "Bye" | Argentina$Away[i] == "Bye"){
     Argentina$Home[i] <- "Bye      "
     Argentina$Away[i] <- ""
   }
@@ -632,11 +634,11 @@ for(i in 1:nrow(Chile)){
     Chile$Home[i] <- "Chile  @"
     Chile$Away[i] <- away[i]
   }
-
+  
   if(( Chile$Home[i] == "Chile")){
     Chile$Home[i] <- "Chile vs"
   }
-    if(Chile$Home[i] == "Bye" | Chile$Away[i] == "Bye"){
+  if(Chile$Home[i] == "Bye" | Chile$Away[i] == "Bye"){
     Chile$Home[i] <- "Bye      "
     Chile$Away[i] <- ""
   }
@@ -683,10 +685,10 @@ fs2 <- fs2 %>% select(Away, Home)
 
 fs2$Home <- paste0("@ ", fs2$Home)
 for(i in 1:nrow(fs2)){
-    if(fs2$Home[i] == "Bye" | fs2$Away[i] == "Bye"){
+  if(fs2$Home[i] == "Bye" | fs2$Away[i] == "Bye"){
     fs2$Away[i] <- fs$Home[i]
     fs2$Home[i] <- "    Bye"
-    }
+  }
 }
 fs2 <- as.matrix(fs2)
 colnames(fs2) <- c(" ", "   ")
@@ -714,40 +716,49 @@ Week9 <- fs2[which(fs[,1] == 9),]
 library(shiny)
 library(png)
 library(shinythemes)
+library(shinyWidgets)
 
 # Define UI for dataset viewer app ----
 ui <- navbarPage("World Softball League",
                  tabPanel("Team Schedules",
-                          fluidPage(theme = shinytheme("united"),
-                                    
-                                    # App title ----
-                                    titlePanel("Teams"),
-                                    
-                                    # Sidebar layout with input and output definitions ----
-                                    sidebarLayout(
-                                      
-                                      # Sidebar panel for inputs ----
-                                      sidebarPanel(
-                                        
-                                        selectInput("countries", choices = c(''), label = "Choose a team"),
-                                        # Include clarifying text ----
-                                        helpText("")
-                                        
-                                      ),
-                                      
-                                      
-                                      # Main panel for displaying outputs ----
-                                      mainPanel(
-                                        
-                                        # Output: Header + table of distribution ----
-                                        h3(uiOutput("header")),
-                                        tableOutput("view")#,
-                                        #imageOutput("image1")
-                                      
-                                    )
-                                    
+                          fluidPage(theme = shinytheme("united"),setBackgroundColor(
+                            color = "#F5F5F3",
+                            gradient = c("linear", "radial"),
+                            direction = c("bottom", "top", "right", "left"),
+                            shinydashboard = FALSE
+                          ),
+                           #column(12,imageOutput("mascot")),
+                          
+                          # App title ----
+                          titlePanel("Teams"),
+                          
+                          # Sidebar layout with input and output definitions ----
+                          fluidRow(
+                            
+                            # Sidebar panel for inputs ----
+                            column(3,
+                              selectInput("countries", choices = c(''), label = "Choose a team"),
+                              # Include clarifying text ----
+                              helpText(""),
+                              imageOutput("image1")
+                              
+                            ),
+                            
+                            
+                            # Main panel for displaying outputs ----
+                            column(4, offset = 1,
+                              
+                              # Output: Header + table of distribution ----
+                              h3(uiOutput("header")),
+                              tableOutput("view")
+                              
+                              
+                            ),
+                            column(3,
+                                   imageOutput("wsl"))
+                            
                           )
-                 )
+                          )
                  ),
                  tabPanel("Weekly Schedule",
                           fluidPage(
@@ -756,17 +767,19 @@ ui <- navbarPage("World Softball League",
                             titlePanel("Weeks"),
                             
                             # Sidebar layout with input and output definitions ----
-                            sidebarLayout(
-                              sidebarPanel(
+                            fluidRow(
+                              column(2,
                                 selectInput("data", "Choose a week:",
                                             choices = c("1","2","3","4","5","6","7","8","9")),
                                 helpText("")
                                 
                               ),
-                              mainPanel(
+                              column(4, offset = 1,
                                 h3(uiOutput("head")),
                                 tableOutput("fs")
-                              )
+                              ),
+                              column(3,
+                                     imageOutput("wsl1"))
                               
                             )
                           )
@@ -803,7 +816,117 @@ server <- function(input, output, session) {
   })
   
   
- # output$image1 <- ("www/Canada.png")
+  output$image1 <- renderImage({
+    
+    if (input$countries == "Canada") {
+      return(list(
+        src = "www/Canada.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Sweden") {
+      return(list(
+        src = "www/Sweden.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Iceland") {
+      return(list(
+        src = "www/Iceland.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Denmark") {
+      return(list(
+        src = "www/Denmark.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Japan") {
+      return(list(
+        src = "www/Japan.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Russia") {
+      return(list(
+        src = "www/Russia.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Antarctica") {
+      return(list(
+        src = "www/Antarctica.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Australia") {
+      return(list(
+        src = "www/Australia.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Argentina") {
+      return(list(
+        src = "www/Argentina.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Chile") {
+      return(list(
+        src = "www/Chile.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Fiji") {
+      return(list(
+        src = "www/Fiji.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+    if (input$countries == "Tahiti") {
+      return(list(
+        src = "www/Tahiti.png",
+        contentType = "png",
+        alt = "Face",
+        height = 150,
+        width = 250
+      ))
+    }
+  }, deleteFile = FALSE)
   
   weeks <- reactive({
     switch(input$data,
@@ -825,6 +948,112 @@ server <- function(input, output, session) {
   output$head <- renderUI({
     paste("Week ", input$data)
   })
+  
+  output$mascot <- renderImage({
+    
+    if (input$countries == "Canada") {
+      return(list(
+        src = "www/CanadaM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Sweden") {
+      return(list(
+        src = "www/SwedenM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Iceland") {
+      return(list(
+        src = "www/IcelandM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Denmark") {
+      return(list(
+        src = "www/DenmarkM.png",
+        contentType = "image/png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Japan") {
+      return(list(
+        src = "www/JapanM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Russia") {
+      return(list(
+        src = "www/RussiaM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Antarctica") {
+      return(list(
+        src = "www/AntarcticaM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Australia") {
+      return(list(
+        src = "www/AustraliaM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Argentina") {
+      return(list(
+        src = "www/ArgentinaM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Chile") {
+      return(list(
+        src = "www/ChileM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Fiji") {
+      return(list(
+        src = "www/FijiM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+    if (input$countries == "Tahiti") {
+      return(list(
+        src = "www/TahitiM.png",
+        contentType = "png",
+        alt = "Face"
+      ))
+    }
+  }, deleteFile = FALSE)
+    
+    output$wsl <- renderImage({
+    return(list(
+      src = 'www/WSL1.png',
+      contentType = "png",
+      alt = "WSL",
+      width = 300
+    ))
+  }, deleteFile = FALSE)
+    
+        output$wsl1 <- renderImage({
+    return(list(
+      src = 'www/WSL1.png',
+      contentType = "png",
+      alt = "WSL",
+      width = 300
+    ))
+  }, deleteFile = FALSE)
 }
 
 

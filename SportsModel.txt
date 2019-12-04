@@ -10,6 +10,8 @@ param w {l in 1..L} >= 0; #penalty for bye weeks
 
 var g {i in 1..I, j in 1..J, l in 1..L} binary; #games
 
+var y {i in 1..I, l in 1..8} binary;
+
 ######################################################
 ##Objective Function/Soft Constraints##
 ######################################################
@@ -23,8 +25,7 @@ sum{l in 1..L, i in 1..I} g[i,j,l] * d[i,j] >= 2800; #min travel distance
 #								- avg jet flies 500mph
 
 subject to Over{j in 1..J}:
-sum{l in 1..L, i in 1..I} 
-g[i,j,l] * d[i,j] <= 3300; #max travel distance
+sum{l in 1..L, i in 1..I} g[i,j,l] * d[i,j] <= 3300; #max travel distance
 
 #Maximize Big Games with Byes
 maximize BBG{l in 2..9}: 
@@ -37,6 +38,9 @@ sum{i in 1..I, j in 1..J} (g[i,j,l]*p[i,j]*w[l]);
 #minimize total distance traveled
 minimize distance{j in 1..J}: 
 sum{i in 1..I, l in 1..L} (g[i,j,l]*d[i,j]);
+
+#Minimize Back to Back away games
+minimize yy: sum{i in 1..I, k in 1..8} y[i,k] ;
 
 ######################################################
 ##HARD CONSTRAINTS##
@@ -83,7 +87,7 @@ sum{l in 1..L, i in 1..I} g[i,j,l] = 5; #5 because of byes
 
 #No more than 2 back-back away
 subject to noB2B{i in 1..I, l in 1..L-2}:
-sum{j in 1..J}(g[i,j,l] + g[i,j,l+1] + g[i,j,l+2]) >= 1;
+sum{j in 1..J}(g[i,j,l] + g[i,j,l+1] + g[i,j,l+2] ) >= 1;
 
 #2/3 home division games
 #North low
@@ -129,3 +133,8 @@ g[7,8,l] + g[8,7,l] + g[7,8,l+1] + g[8,7,l+1] <= 1; #Australia/Antarctica
 subject to 2ByesPerWeek{l in 1..L}: 
 sum{i in 1..I} g[i,i,l] <= 2;
 
+#
+subject to NoB2Ba{i in 1..I}: sum{l in 1..8}y[i,l] <= 1;
+
+#
+subject to Ydef{i in 1..12, l in 1..8}: sum{j in 1..12}(g[i,j,l] + g[i,j,l+1]) + y[i,l] >= 1;
